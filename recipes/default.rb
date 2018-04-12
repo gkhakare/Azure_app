@@ -31,15 +31,15 @@ execute 'set-path' do
 	command 'echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/default/tomcat7'
 end 
 
-template "/tmp/aws.sh" do 
+template "/tmp/download.sh" do 
   source "copy.erb" 
   owner "root" 
   group "root" 
   mode "0644" 
 end
 
-execute 'sh /tmp/aws.sh' do
- command 'sh /tmp/aws.sh'
+execute 'sh /tmp/download.sh' do
+ command 'sh /tmp/download.sh'
 end
 service 'tomcat7' do
         action:restart
