@@ -1,2 +1,3 @@
 wget https://github.com/ShantanuRean/spring-boot-crud/blob/master/SpringBootCRUDApp.war
-chmod +x /var/lib/tomcat7/webapps/<%= node['tomcat7']['file_name'] %>
+sudo cp SpringBootCRUDApp.war /var/lib/tomcat7/webapps
+sudo chmod +x /var/lib/tomcat7/webapps/<%= node['tomcat7']['file_name'] %>
