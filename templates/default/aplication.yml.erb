@@ -1,0 +1,19 @@
+---
+server:
+  port: 8080
+  contextPath: /SpringBootCRUDApp
+spring:
+  profiles: default
+datasource:
+  sampleapp:
+    url: jdbc:mysql://<%= node['tomcat7']['dn_host'] %>:3306/websystique?verifyServerCertificate=true&useSSL=true&requireSSL=true&createDatabaseIfNotExist=true
+    username: <%= node['tomcat7']['username'] %>
+    password: <%= node['tomcat7']['password'] %>
+    driverClassName: com.mysql.jdbc.Driver
+    defaultSchema:
+    maxPoolSize: 20
+    hibernate:
+      hbm2ddl.method: update
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
