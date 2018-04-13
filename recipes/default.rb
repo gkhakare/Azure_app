@@ -31,16 +31,32 @@ execute 'set-path' do
 	command 'echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/default/tomcat7'
 end 
 
-template "/tmp/download.sh" do 
+template "/tmp/aws.sh" do 
   source "copy.erb" 
   owner "root" 
   group "root" 
   mode "0644" 
 end
 
-execute 'sh /tmp/download.sh' do
- command 'sh /tmp/download.sh'
+template "/tmp/application.yml" do 
+  source "application.yml.erb" 
+  owner "root" 
+  group "root" 
 end
+
+execute 'sh /tmp/aws.sh' do
+ command 'sh /tmp/aws.sh'
+end
+
+service 'tomcat7' do
+        action:restart
+end
+
+execute 'Copy database configuration file to application' do
+ command 'sleep 10; cp /tmp/application.yml /var/lib/tomcat7/webapps/SpringBootCRUDApp/WEB-INF/classes'
+end
+
+
 service 'tomcat7' do
         action:restart
 end
