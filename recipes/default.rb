@@ -53,7 +53,7 @@ service 'tomcat7' do
 end
 
 execute 'Copy database configuration file to application' do
- command 'sleep 10; cp /tmp/application.yml /var/lib/tomcat7/webapps/SpringBootCRUDApp/WEB-INF/classes'
+ command 'sleep 15; cp /tmp/application.yml /var/lib/tomcat7/webapps/ROOT/WEB-INF/classes'
 end
 
 
